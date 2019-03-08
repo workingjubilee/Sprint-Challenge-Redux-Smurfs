@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createSmurf } from '../actions';
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class SmurfForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.props.createSmurf();
   };
 
   render() { return (
@@ -25,8 +28,9 @@ class SmurfForm extends Component {
       <input type="text" name="name" onChange={this.handleFormText} />
       <input type="text" name="age" onChange={this.handleFormText} />
       <input type="text" name="email" onChange={this.handleFormText} />
+      <button type="submit">Smurf Another Smurf!</button>
     </form>
   )};
 };
 
-export default SmurfForm;
+export default connect(null,{ createSmurf })(SmurfForm);

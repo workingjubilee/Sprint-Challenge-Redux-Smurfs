@@ -5,19 +5,34 @@ import { GET_SMURFS, GET_ERROR, GET_SUCCESS, CREATE_SMURFS, CREATE_ERROR, CREATE
 */
 
 const initialState = {
-
+  getting: false,
+  list: [],
+  getError: {},
+  creating: false,
+  createError: {}
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_SMURFS: return state
-    case GET_ERROR: return state
-    case GET_SUCCESS: return state
+    case GET_SMURFS: return {
+      ...state,
+      getting: true
+    }
+    case GET_ERROR: return {
+      ...state,
+      getting: false,
+      getError: action.payload
+    }
+    case GET_SUCCESS: return {
+      ...state,
+      getting: false,
+      list: action.payload
+    }
     case CREATE_SMURFS: return state
     case CREATE_ERROR: return state
     case CREATE_SUCCESS: return state
     default: return state
-  };
+  }
 }
 
 /*

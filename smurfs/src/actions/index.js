@@ -13,24 +13,25 @@ export const CREATE_SUCCESS = 'CREATE_SUCCESS';
 */
 
 export const getSmurfs = () => dispatch => {
+  console.log("Fired!");
   dispatch( {type: GET_SMURFS} );
-  axios.get('http://localhost:5000/smurfs/')
+  axios.get('http://localhost:3333/smurfs/')
     .then(result => {
       dispatch( {type: GET_SUCCESS, payload: result.data} )
     })
     .catch(error => {
-      dispatch( {type: GET_ERROR, payload: error.response.data} )
+      dispatch( {type: GET_ERROR, payload: error} )
     });
 };
 
 export const createSmurf = () => dispatch => {
   dispatch( {type: CREATE_SMURFS} );
-  axios.post('http://localhost:5000/smurfs/')
+  axios.post('http://localhost:3333/smurfs/')
     .then(result => {
-      dispatch( {type: CREATE_SUCCESS, payload: result.data} )
+      dispatch( {type: CREATE_SUCCESS, payload: result} )
     })
     .catch(error => {
-      dispatch( {type: CREATE_ERROR, payload: error.response.data}    )
+      dispatch( {type: CREATE_ERROR, payload: error}    )
     });
 };
 
