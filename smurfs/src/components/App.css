@@ -1,13 +1,12 @@
+.Smurfy {
+  background-color: lightblue
+}
+
+
 li {
   list-style-type: none;
-};
+}
 
-ul {
-  display: flex;
-  flex-flow: column nowrap;
-};
-
-form {
-  display: flex;
-  flex-flow: column-reverse;
-};
+button {
+  background-color: white;
+}

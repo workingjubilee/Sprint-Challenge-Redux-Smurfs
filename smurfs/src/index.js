@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import './components/App.css';
 
+
 const middlewares = [thunk, logger];
 
 const store = createStore(rootReducer, applyMiddleware(...middlewares));

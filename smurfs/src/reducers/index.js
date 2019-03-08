@@ -1,4 +1,4 @@
-import { GET_SMURFS, GET_ERROR, GET_SUCCESS, CREATE_SMURFS, CREATE_ERROR, CREATE_SUCCESS } from '../actions';
+import { GET_SMURFS, GET_ERROR, GET_SUCCESS, CREATE_SMURFS, CREATE_ERROR, CREATE_SUCCESS, VISIT_GARGAMEL, DELETE_SMURF, DELETE_ERROR, DELETE_SUCCESS } from '../actions';
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -9,7 +9,8 @@ const initialState = {
   list: [],
   getError: {},
   creating: false,
-  createError: {}
+  createError: {},
+  gargamel: false
 };
 
 export default function(state = initialState, action) {
@@ -41,6 +42,10 @@ export default function(state = initialState, action) {
       ...state,
       creating: false,
       list: action.payload
+    }
+    case VISIT_GARGAMEL: return {
+      ...state,
+      gargamel: !state.gargamel
     }
     default: return state
   }

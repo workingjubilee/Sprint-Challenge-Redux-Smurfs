@@ -6,6 +6,10 @@ export const GET_ERROR = 'GET_ERROR';
 export const CREATE_SMURFS = 'CREATE_SMURFS';
 export const CREATE_ERROR = 'CREATE_ERROR';
 export const CREATE_SUCCESS = 'CREATE_SUCCESS';
+export const VISIT_GARGAMEL = 'VISIT_GARGAMEL';
+export const DELETE_SMURF = 'DELETE_SMURF';
+export const DELETE_ERROR = 'DELETE_ERROR';
+export const DELETE_SUCCESS = 'DELETE_SUCCESS';
 
 /*
   Action Types Go Here!
@@ -36,7 +40,20 @@ export const createSmurf = data => dispatch => {
     });
 };
 
+export const visitGargamel = data => dispatch => {
+  dispatch( {type: VISIT_GARGAMEL} );
+};
 
+export const deleteSmurf = id => dispatch => {
+  dispatch( {type: DELETE_SMURF} );
+  axios.delete(`http://localhost:3333/smurfs/${id}`)
+    .then(result => {
+      dispatch( {type: DELETE_SUCCESS, payload: result.data} )
+    })
+    .catch(error => {
+      dispatch({type: DELETE_ERROR, payload: error})
+    })
+};
 
 
 /*

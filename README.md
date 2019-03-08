@@ -32,7 +32,7 @@ The store is a mega-state, it's for creating application-wide state that can hav
 
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
-Application state is a very interesting way of referencing Redux, Context, or other Flow-like stores that hold a state that needs to be shared between components. Generally, we use local state if we're just monitoring something like the current text in an input that hasn't been finalized, but when we send that input out, we often want to create an update across an entire screen and probably post updates to a server, and that is best done when we shove that into a store, otherwise we enter the Hell of Being Drilled Alive.
+Application state is a very interesting way of referencing Redux, Context, or other Flow-like stores that hold a state that needs to be shared between components. Generally, we use local (i.e. component) state if we're just monitoring something like the current text in an input that hasn't been finalized, but when we send that input out, we often want to create an update across an entire screen and probably post updates to a server, and that is best done when we shove that into a store, otherwise we enter the Hell of Being Drilled Alive.
 
 
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?

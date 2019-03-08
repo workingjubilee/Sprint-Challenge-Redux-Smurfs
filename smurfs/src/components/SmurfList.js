@@ -1,11 +1,10 @@
 import React from 'react';
+import Smurf from './Smurf';
 
 const SmurfList = ({smurfs}) => {
   const mapSmurfs = smurfs.map(smurf => {
     return (
-      <li key={smurf.name}>
-      {smurf.name}, {smurf.age} years old, {smurf.height} tall!
-      </li>
+      <Smurf {...smurf} />
     )
   });
   return (
