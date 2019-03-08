@@ -29,7 +29,7 @@ export const createSmurf = data => dispatch => {
   dispatch( {type: CREATE_SMURFS} );
   axios.post('http://localhost:3333/smurfs/', data)
     .then(result => {
-      dispatch( {type: CREATE_SUCCESS, payload: result} )
+      dispatch( {type: CREATE_SUCCESS, payload: result.data} )
     })
     .catch(error => {
       dispatch( {type: CREATE_ERROR, payload: error}    )
