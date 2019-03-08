@@ -28,9 +28,20 @@ export default function(state = initialState, action) {
       getting: false,
       list: action.payload
     }
-    case CREATE_SMURFS: return state
-    case CREATE_ERROR: return state
-    case CREATE_SUCCESS: return state
+    case CREATE_SMURFS: return {
+      ...state,
+      creating: true
+    }
+    case CREATE_ERROR: return {
+      ...state,
+      creating: false,
+      createError: action.payload
+    }
+    case CREATE_SUCCESS: return {
+      ...state,
+      creating: false,
+      list: action.payload
+    }
     default: return state
   }
 }
