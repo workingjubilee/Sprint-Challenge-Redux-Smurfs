@@ -23,8 +23,21 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Actions are generally relatively dumb "update notifications" that tell reducers how to act, but for async actions like with thunk, they tend to carry a lot of extra information with them. They notably still aren't supposed to do "logic", like decide what to do with that information, just carry it around.
+
+Reducers are logic-holders that are designed to respond to actions intelligently and generally they serve to grab all the many possible updates and then collapse them into a single state object that is then lodged in the store.
+
+The store is a mega-state, it's for creating application-wide state that can have uniquely durable properties because you can easily merge the store into a final saved file somewhere and most things in the store are something you should be saving, not a mere temporary local state update on what text is in a form.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is a very interesting way of referencing Redux, Context, or other Flow-like stores that hold a state that needs to be shared between components. Generally, we use local (i.e. component) state if we're just monitoring something like the current text in an input that hasn't been finalized, but when we send that input out, we often want to create an update across an entire screen and probably post updates to a server, and that is best done when we shove that into a store, otherwise we enter the Hell of Being Drilled Alive.
+
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Redux thunk is for creating functions inside our previously dumb actions that let us do logic... but we still shouldn't DO a lot of logic. But it is still essential for efficiently resolving asynchronous actions without implementing what would otherwise be some really dumb hacks that I can envision, like popping invisible components in to existence based on state and having them run async actions starting from mounted and using their lifecycle methods and... it'd be REALLY STUPID to do all that but it'd work which is why we have thunk to save us from ourselves while still using the Redux store.
 
 ## Project Set Up
 

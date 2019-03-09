@@ -1,5 +1,27 @@
+html, body {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   font-family: sans-serif;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  display: flex;
+  flex-flow: column nowrap;
 }
