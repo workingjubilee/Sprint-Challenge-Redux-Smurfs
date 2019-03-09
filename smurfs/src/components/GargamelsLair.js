@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Unsmurf from './Unsmurf';
 import './Gargamel.css';
 
-export const GargamelsLair = ({smurfs}) => {
-  const mapSmurfs = smurfs.map(smurf => {
+class GargamelsLair extends Component {
+  render() {
+    const mapUnsmurfs = this.props.unsmurfs.map(smurf => {
+      return (
+        <Unsmurf name={smurf.name} id={smurf.id} />
+      )
+    });
     return (
-      <Unsmurf name={smurf.name} id={smurf.id} />
+      <div className="Gargamel">
+        <p>Gargamel in the hizzouse!</p>
+        {mapUnsmurfs}
+      </div>
     )
-  });
-  return (
-    <div className="Gargamel">
-      <p>Gargamel in the hizzouse!</p>
-      {mapSmurfs}
-    </div>
-  )
-};
+  };
+}
+
+const mapSmurfsToDead = state => ({
+  unsmurfs: state.gargamelList
+});
+
+export default connect(mapSmurfsToDead, {})( GargamelsLair )

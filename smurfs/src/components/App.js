@@ -4,7 +4,7 @@ import './App.css';
 import { getSmurfs, visitGargamel } from '../actions/';
 import SmurfForm from './SmurfForm';
 import SmurfList from './SmurfList';
-import { GargamelsLair } from './GargamelsLair';
+import GargamelsLair from './GargamelsLair';
 
 
 class App extends Component {

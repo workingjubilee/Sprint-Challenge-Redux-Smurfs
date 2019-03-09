@@ -5,11 +5,11 @@ import { deleteSmurf } from '../actions/';
 class Unsmurf extends Component {
   constructor(props) {
     super(props);
-  }
+  };
 
   goldenizeSmurf = (id, event) => {
     this.props.deleteSmurf(id);
-  }
+  };
 
   render() {
     return (

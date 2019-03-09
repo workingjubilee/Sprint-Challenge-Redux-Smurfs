@@ -10,7 +10,10 @@ const initialState = {
   getError: {},
   creating: false,
   createError: {},
-  gargamel: false
+  gargamel: false,
+  gargamelList: [],
+  deleting: false,
+  deleteError: {}
 };
 
 export default function(state = initialState, action) {
@@ -45,7 +48,22 @@ export default function(state = initialState, action) {
     }
     case VISIT_GARGAMEL: return {
       ...state,
-      gargamel: !state.gargamel
+      gargamel: !state.gargamel,
+      gargamelList: state.list
+    }
+    case DELETE_SMURF: return {
+      ...state,
+      deleting: true
+    }
+    case DELETE_ERROR: return {
+      ...state,
+      deleting: false,
+      deleteError: action.payload
+    }
+    case DELETE_SUCCESS: return {
+      ...state,
+      deleting: false,
+      list: action.payload
     }
     default: return state
   }
